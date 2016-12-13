@@ -1,0 +1,13 @@
+*.pyc
+.DS_Store
+*.DS_Store
+logos/
+sftp-config.json
+*.psd
+graphics/
+tweetme.png
+*.log
+tweet-archive.txt
+tweet-these-scenes.txt
+media/
+all-scenes-sorted.txt
