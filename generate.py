@@ -1,10 +1,10 @@
 import codecs, os, re
 from datetime import datetime, timedelta
 
-MEDIA_DIR = '/Users/ianfitzpatrick/Downloads/misc/Twin Peaks/Season 2'
+MEDIA_DIR = '/Users/ianfitzpatrick/Downloads/misc/tps2'
 SHOW = 'tp'
-SEASON = '01'
-EPISODE = '02'
+SEASON = '02'
+EPISODE = '01'
 OUTPUT_DIR = '%s/media' % os.getcwd()
 TEMP_DIR = '%s/media/temp' % os.getcwd()
 
@@ -60,7 +60,7 @@ def parse_srt(media_dir, show, season, episode):
             tdelta = datetime.strptime(end, FMT) - datetime.strptime(start, FMT)
             
             # No crazy long scenes
-            if tdelta.seconds < 8:
+            if tdelta.seconds < 15:
 
                 dur_s = '0%s' % tdelta.seconds
                 dur_ms = str(tdelta.microseconds)[::2]
@@ -82,15 +82,15 @@ def parse_srt(media_dir, show, season, episode):
     return scene_list
 
 def make_those_gifs():
-    # episodes = ['02', '03', '04', '05', '06', '07']
-    # for e in episodes:
-    s = parse_srt(MEDIA_DIR, SHOW, '02', '22')
+    episodes = ['02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '17', '18', '19', '20', '21']
     
-    for item in s:
-        item.split_video('avi', MEDIA_DIR, OUTPUT_DIR)
-        item.create_ass_file(TEMP_DIR, 'template.ass')
-        item.create_gif(TEMP_DIR, OUTPUT_DIR)
-
+    for e in episodes:
+        s = parse_srt(MEDIA_DIR, SHOW, '02', e)
+        
+        for item in s:
+            item.split_video('mp4', MEDIA_DIR, OUTPUT_DIR)
+            item.create_ass_file(TEMP_DIR, 'template.ass')
+            item.create_gif(TEMP_DIR, OUTPUT_DIR)
 
 make_those_gifs()
 

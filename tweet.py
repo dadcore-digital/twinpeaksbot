@@ -62,14 +62,3 @@ blog_url = t.post('user/info')
 blog_url = blog_url['user']['blogs'][0]['url']
 photo = open(gif, 'rb')
 post = t.post('post', blog_url=blog_url, params={'type':'photo', 'data': photo})
-
-
-
-
-
-
-
-
-
-
-

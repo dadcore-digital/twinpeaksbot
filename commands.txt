@@ -1,3 +1,15 @@
 ffmpeg -ss 0:04:54.79 -i tps01e00.avi -t 00:00:04 -c:v libx264 -c:a libvo_aacenc out.mp4
 gifify out.mp4 -o test.gif --colors 256 --resize 317:-1 --compress 80 --subtitles tps01e00.ass
 
+
+# Extract SRT Files from MKV file
+# Get track info of
+mkvmerge -i tps02e01.mkv
+
+# Assuming subtitle is track 3, extract track 3
+
+mkvextract tracks tps02e01.mkv 3:tps02e01.srt
+
+
+
+
